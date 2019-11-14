@@ -1,0 +1,36 @@
+﻿<Window x:Class="ProyectoFinalEstructuraDeDatos.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ProyectoFinalEstructuraDeDatos"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <ListView HorizontalAlignment="Left" Height="256" Margin="10,39,0,0" VerticalAlignment="Top" Width="199">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn DisplayMemberBinding="{Binding Titulo}" Header="Título" Width="100"></GridViewColumn>
+                    <GridViewColumn DisplayMemberBinding="{Binding Año}" Header="Año" Width="100"></GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="btnNuevo" Content="Nuevo elemento&#xD;&#xA;" HorizontalAlignment="Left" Height="24" Margin="227,39,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
+        <Button Content="Ordenar A-Z&#x9;" HorizontalAlignment="Left" Height="26" Margin="21,308,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Año Asc." HorizontalAlignment="Left" Height="26" Margin="117,308,0,0" VerticalAlignment="Top" Width="79"/>
+        <Button Content="Año Desc." HorizontalAlignment="Left" Height="26" Margin="117,362,0,0" VerticalAlignment="Top" Width="79"/>
+        <Button Content="Ordenar Z-A" HorizontalAlignment="Left" Height="26" Margin="21,362,0,0" VerticalAlignment="Top" Width="75"/>
+        <TextBlock HorizontalAlignment="Left" Margin="21,10,0,0" TextWrapping="Wrap" Text="PELÍCULAS Y SERIES" VerticalAlignment="Top" RenderTransformOrigin="-0.641,0.413" FontWeight="Bold" Width="147" Height="24"/>
+        <TextBlock x:Name="lbl_Tipo" HorizontalAlignment="Left" Margin="372,34,0,0" TextWrapping="Wrap" Text="Tipo" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lbl_Pelicula" HorizontalAlignment="Left" Margin="397,61,0,0" TextWrapping="Wrap" Text="Película" VerticalAlignment="Top"/>
+        <TextBlock x:Name="lbl_Serie" HorizontalAlignment="Left" Margin="471,62,0,0" TextWrapping="Wrap" Text="Serie" VerticalAlignment="Top"/>
+        <StackPanel x:Name="Stackpanel">
+            <RadioButton x:Name="rdSeries" Content="RadioButton" HorizontalAlignment="Left" Height="14" Margin="378,62,0,0" VerticalAlignment="Top" Width="13"/>
+            <RadioButton x:Name="rdPeliculas" Content="RadioButton" HorizontalAlignment="Left" Height="14" Margin="452,-13,0,0" VerticalAlignment="Top" Width="13"/>
+        </StackPanel>
+        <Button x:Name="btn_Guardar" Visibility="Visible" Content="Guardar elemento nuevo" HorizontalAlignment="Left" Height="20" Margin="386,347,0,0" VerticalAlignment="Top" Width="164" Click="btn_Guardar_Click"/>
+        <Button x:Name="btn_Cancelar" Content="Cancelar" Visibility="Visible" Margin="577,347,129.6,46" Click="btn_Cancelar_Click"/>
+        <Grid x:Name="grdCine" Margin="0,0,-0.4,0"/>
+    </Grid>
+</Window>
