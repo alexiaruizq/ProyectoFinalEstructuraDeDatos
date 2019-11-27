@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <ListView HorizontalAlignment="Left" Height="256" Margin="10,39,0,0" VerticalAlignment="Top" Width="199">
+        <ListView x:Name="lista" HorizontalAlignment="Left" Height="256" Margin="10,39,0,0" VerticalAlignment="Top" Width="199" SelectionChanged="lista_SelectionChanged">
             <ListView.View>
                 <GridView>
                     <GridViewColumn DisplayMemberBinding="{Binding Titulo}" Header="Título" Width="100"></GridViewColumn>
@@ -17,20 +17,68 @@
         </ListView>
 
         <Button x:Name="btnNuevo" Content="Nuevo elemento&#xD;&#xA;" HorizontalAlignment="Left" Height="24" Margin="227,39,0,0" VerticalAlignment="Top" Width="107" Click="Button_Click"/>
-        <Button Content="Ordenar A-Z&#x9;" HorizontalAlignment="Left" Height="26" Margin="21,308,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button Content="Año Asc." HorizontalAlignment="Left" Height="26" Margin="117,308,0,0" VerticalAlignment="Top" Width="79"/>
-        <Button Content="Año Desc." HorizontalAlignment="Left" Height="26" Margin="117,362,0,0" VerticalAlignment="Top" Width="79"/>
-        <Button Content="Ordenar Z-A" HorizontalAlignment="Left" Height="26" Margin="21,362,0,0" VerticalAlignment="Top" Width="75"/>
+        <Button Content="Ordenar A-Z&#x9;" HorizontalAlignment="Left" Height="26" Margin="21,308,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_1"/>
+        <Button Content="Año Asc." HorizontalAlignment="Left" Height="26" Margin="117,308,0,0" VerticalAlignment="Top" Width="79" Click="Button_Click_2"/>
+        <Button Content="Año Desc." HorizontalAlignment="Left" Height="26" Margin="117,362,0,0" VerticalAlignment="Top" Width="79" Click="Button_Click_4"/>
+        <Button Content="Ordenar Z-A" HorizontalAlignment="Left" Height="26" Margin="21,362,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
         <TextBlock HorizontalAlignment="Left" Margin="21,10,0,0" TextWrapping="Wrap" Text="PELÍCULAS Y SERIES" VerticalAlignment="Top" RenderTransformOrigin="-0.641,0.413" FontWeight="Bold" Width="147" Height="24"/>
         <TextBlock x:Name="lbl_Tipo" HorizontalAlignment="Left" Margin="372,34,0,0" TextWrapping="Wrap" Text="Tipo" VerticalAlignment="Top"/>
         <TextBlock x:Name="lbl_Pelicula" HorizontalAlignment="Left" Margin="397,61,0,0" TextWrapping="Wrap" Text="Película" VerticalAlignment="Top"/>
         <TextBlock x:Name="lbl_Serie" HorizontalAlignment="Left" Margin="471,62,0,0" TextWrapping="Wrap" Text="Serie" VerticalAlignment="Top"/>
         <StackPanel x:Name="Stackpanel">
-            <RadioButton x:Name="rdSeries" Content="RadioButton" HorizontalAlignment="Left" Height="14" Margin="378,62,0,0" VerticalAlignment="Top" Width="13"/>
-            <RadioButton x:Name="rdPeliculas" Content="RadioButton" HorizontalAlignment="Left" Height="14" Margin="452,-13,0,0" VerticalAlignment="Top" Width="13"/>
+            <RadioButton x:Name="rdSeries" Content="RadioButton" HorizontalAlignment="Left" Height="16" Margin="452,63,0,0" VerticalAlignment="Top" Width="16"/>
+            <RadioButton x:Name="rdPeliculas" Content="RadioButton" HorizontalAlignment="Left" Height="16" Margin="378,-17,0,0" VerticalAlignment="Top" Width="16"/>
         </StackPanel>
-        <Button x:Name="btn_Guardar" Visibility="Visible" Content="Guardar elemento nuevo" HorizontalAlignment="Left" Height="20" Margin="386,347,0,0" VerticalAlignment="Top" Width="164" Click="btn_Guardar_Click"/>
-        <Button x:Name="btn_Cancelar" Content="Cancelar" Visibility="Visible" Margin="577,347,129.6,46" Click="btn_Cancelar_Click"/>
+        <Button x:Name="btn_Guardar" Visibility="Hidden" Margin="386,347,0,0" Content="Guardar elemento nuevo" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="164" Click="btn_Guardar_Click"/>
+        <Button x:Name="btn_Editar" Visibility="Hidden" Margin="386,347,0,0" Content="Editar Elemento" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="164" Click="btn_Editar_Click"/>
+        <Button x:Name="btn_Cancelar" Visibility="Hidden" Margin="577,347,129.6,46" Content="Cancelar" Click="btn_Cancelar_Click" />
         <Grid x:Name="grdCine" Margin="0,0,-0.4,0"/>
+
+
+
+        <TextBlock Visibility="Hidden" x:Name="lblNuevo" HorizontalAlignment="Left" Height="24" Margin="288,110,0,0" TextWrapping="Wrap" Text="AGREGAR NUEVO ELEMENTO" VerticalAlignment="Top" Width="181" FontWeight="Bold"/>
+        <TextBlock Visibility="Hidden" x:Name="lblTitulo2" HorizontalAlignment="Left" Margin="287,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Título"/><LineBreak/><Run/></TextBlock>
+        <TextBox Visibility="Hidden" x:Name="lblTitulo" x:FieldModifier="public" HorizontalAlignment="Left" Height="20" Margin="341,155,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344"/>
+        <TextBlock Visibility="Hidden" x:Name="lblAño2" HorizontalAlignment="Left" Margin="287,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Año"/>
+        <TextBox Visibility="Hidden" x:Name="lblAño" x:FieldModifier="public" HorizontalAlignment="Left" Height="20" Margin="341,187,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+        <TextBlock Visibility="Hidden" x:Name="cmbGenero2" HorizontalAlignment="Left" Margin="480,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Genero"/>
+        <TextBox Visibility="Hidden" x:Name="lblDescripcion" HorizontalAlignment="Left" Height="40" Margin="366,245,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318"/>
+        <TextBlock Visibility="Hidden" x:Name="lblDescripcion2" HorizontalAlignment="Left" Margin="288,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Descripción"/>
+        <TextBlock Visibility="Hidden" x:Name="lblRating2" HorizontalAlignment="Left" Margin="293,291,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Rating"/>
+        <TextBox Visibility="Hidden" x:Name="lblRating" HorizontalAlignment="Left" Height="18" Margin="367,290,0,0" TextWrapping="Wrap" Text="3                      " VerticalAlignment="Top" Width="26"/>
+        <ComboBox Visibility="Hidden" x:Name="cmbGenero" HorizontalAlignment="Left" Height="22" Margin="544,189,0,0" VerticalAlignment="Top" Width="141">
+            <ComboBoxItem>Terror</ComboBoxItem>
+            <ComboBoxItem>Acción</ComboBoxItem>
+            <ComboBoxItem>Romance</ComboBoxItem>
+            <ComboBoxItem>Drama</ComboBoxItem>
+            <ComboBoxItem>Comedia</ComboBoxItem>
+            <ComboBoxItem>Suspenso</ComboBoxItem>
+        </ComboBox>
+
+
+        <TextBlock  Visibility="Hidden" x:Name="txtTitle2" HorizontalAlignment="Left" Margin="292,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top"><Run Text="Título"/><LineBreak/><Run/></TextBlock>
+        <TextBox  Visibility="Hidden" x:Name="txtTitle" HorizontalAlignment="Left" Height="20" Margin="346,154,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="344"/>
+        <TextBlock  Visibility="Hidden" x:Name="txtYear2" HorizontalAlignment="Left" Margin="292,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Año"/>
+        <TextBox  Visibility="Hidden" x:Name="txtYear" HorizontalAlignment="Left" Height="20" Margin="346,186,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+        <TextBlock  Visibility="Hidden" x:Name="cmbGenre2" HorizontalAlignment="Left" Margin="485,189,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Genero"/>
+        <ComboBox Visibility="Hidden"  x:Name="cmbGenre" HorizontalAlignment="Left" Height="22" Margin="543,190,0,0" VerticalAlignment="Top" Width="141">
+            <ComboBoxItem>Terror</ComboBoxItem>
+            <ComboBoxItem>Acción</ComboBoxItem>
+            <ComboBoxItem>Romance</ComboBoxItem>
+            <ComboBoxItem>Drama</ComboBoxItem>
+            <ComboBoxItem>Comedia</ComboBoxItem>
+            <ComboBoxItem>Suspenso</ComboBoxItem>
+        </ComboBox>
+        <TextBlock  Visibility="Hidden" x:Name="txtProductor2" HorizontalAlignment="Left" Margin="485,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Productor"/>
+        <TextBox  Visibility="Hidden" x:Name="txtProductor" HorizontalAlignment="Left" Height="20" Margin="549,222,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="141"/>
+        <TextBlock Visibility="Hidden"  x:Name="txtSeasons2" HorizontalAlignment="Left" Margin="293,224,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Temporadas"/>
+        <TextBox  Visibility="Hidden" x:Name="txtSeasons" HorizontalAlignment="Left" Height="18" Margin="372,224,0,0" TextWrapping="Wrap" Text="3                      " VerticalAlignment="Top" Width="26"/>
+        <TextBlock  Visibility="Hidden" x:Name="txtDescription2" HorizontalAlignment="Left" Margin="293,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Descripción"/>
+        <TextBox  Visibility="Hidden" x:Name="txtDescription" HorizontalAlignment="Left" Height="40" Margin="372,255,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="318"/>
+        <TextBlock Visibility="Hidden"  x:Name="txtRating2" HorizontalAlignment="Left" Margin="298,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="Rating"/>
+        <TextBox Visibility="Hidden"  x:Name="txtRating" HorizontalAlignment="Left" Height="18" Margin="372,306,0,0" TextWrapping="Wrap" Text="3" VerticalAlignment="Top" Width="26"/>
+        
+
     </Grid>
+
 </Window>

@@ -54,14 +54,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Peliculas.xaml.cs">
-      <DependentUpon>Peliculas.xaml</DependentUpon>
+    <Compile Include="Datos.cs" />
+    <Compile Include="Peliculas.cs" />
+    <Compile Include="Series.cs" />
+    <Compile Include="VisualizacionPeliculas.xaml.cs">
+      <DependentUpon>VisualizacionPeliculas.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Series.xaml.cs">
-      <DependentUpon>Series.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Visualización.xaml.cs">
-      <DependentUpon>Visualización.xaml</DependentUpon>
+    <Compile Include="VisualizacionSeries.xaml.cs">
+      <DependentUpon>VisualizacionSeries.xaml</DependentUpon>
     </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -75,15 +75,11 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Peliculas.xaml">
+    <Page Include="VisualizacionPeliculas.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Series.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Visualización.xaml">
+    <Page Include="VisualizacionSeries.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
