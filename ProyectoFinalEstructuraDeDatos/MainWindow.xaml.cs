@@ -35,8 +35,8 @@ namespace ProyectoFinalEstructuraDeDatos
         {
             InitializeComponent();
 
-            Peliculas pelicula1 = new Peliculas("Pelicula" ,"Wuu", 2006, "Acción", "adsfadfasfdr", 2);
-            Series serie1 = new Series("Serie", "Wuu2", 2002, "Comedia", "adsfadfasfdr", 2, 10, "Alexia");
+            Peliculas pelicula1 = new Peliculas("Pelicula" ,"Wuu", 2006, "3", "adsfadfasfdr", 2);
+            Series serie1 = new Series("Serie", "Wuu2", 2002, "1", "adsfadfasfdr", 2, 10, "Alexia");
 
             listaDatos.Add(pelicula1);
             listaDatos.Add(serie1);
@@ -243,7 +243,7 @@ namespace ProyectoFinalEstructuraDeDatos
             }
         }
 
-        // Edit Movie/Series !!!
+        // Edit Movies/Series
         private void btn_Editar_Click(object sender, RoutedEventArgs e)
         {
             if (listaDatos[lista.SelectedIndex].Formato == "Serie")
@@ -256,7 +256,7 @@ namespace ProyectoFinalEstructuraDeDatos
                 listaDatos[lista.SelectedIndex].Productor = ((VisualizacionSeries)(grdCine.Children[0])).txtProductor.Text;
                 listaDatos[lista.SelectedIndex].Temporadas = Int32.Parse(((VisualizacionSeries)(grdCine.Children[0])).txtSeasons.Text);
                 lista.Items.Refresh();
-                
+                hideFields();
             }
             else if (listaDatos[lista.SelectedIndex].Formato == "Pelicula")
             {
@@ -266,8 +266,8 @@ namespace ProyectoFinalEstructuraDeDatos
                 listaDatos[lista.SelectedIndex].Descripcion = ((VisualizacionPeliculas)(grdCine.Children[0])).txtDescription.Text;
                 listaDatos[lista.SelectedIndex].Genero = ((VisualizacionPeliculas)(grdCine.Children[0])).cmbGenre.SelectedIndex.ToString();
                 lista.Items.Refresh();
+                hideFields();
             }
-            hideFields();
         }
         
         /// Sorting Methods
