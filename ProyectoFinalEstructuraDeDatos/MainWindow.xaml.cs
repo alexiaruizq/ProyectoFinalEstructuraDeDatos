@@ -47,13 +47,15 @@ namespace ProyectoFinalEstructuraDeDatos
         // Add New
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(rdSeries.IsChecked == true)
+            if (rdSeries.IsChecked == true)
             {
+                hideFields();
+
                 lblNuevo.Visibility = Visibility.Visible;
-                txtYear.Visibility = Visibility.Visible;
-                txtYear2.Visibility = Visibility.Visible;
                 txtTitle.Visibility = Visibility.Visible;
                 txtTitle2.Visibility = Visibility.Visible;
+                txtYear.Visibility = Visibility.Visible;
+                txtYear2.Visibility = Visibility.Visible;
                 txtSeasons.Visibility = Visibility.Visible;
                 txtSeasons2.Visibility = Visibility.Visible;
                 txtRating.Visibility = Visibility.Visible;
@@ -65,16 +67,21 @@ namespace ProyectoFinalEstructuraDeDatos
                 cmbGenre.Visibility = Visibility.Visible;
                 cmbGenre2.Visibility = Visibility.Visible;
 
-                btnNuevo.Visibility = Visibility.Hidden;
-                lbl_Pelicula.Visibility = Visibility.Hidden;
-                lbl_Serie.Visibility = Visibility.Hidden;
-                lbl_Tipo.Visibility = Visibility.Hidden;
-                Stackpanel.Visibility = Visibility.Hidden;
+                txtTitle.Text = "";
+                txtYear.Text = "";
+                txtSeasons.Text = "";
+                txtRating.Text = "";
+                txtProductor.Text = "";
+                txtDescription.Text = "";
+                cmbGenre.SelectedIndex = -1;
+
                 btn_Cancelar.Visibility = Visibility.Visible;
                 btn_Guardar.Visibility = Visibility.Visible;
             }
             else if(rdPeliculas.IsChecked == true)
             {
+                hideFields();
+
                 lblNuevo.Visibility = Visibility.Visible;
                 lblTitulo.Visibility = Visibility.Visible;
                 lblTitulo2.Visibility = Visibility.Visible;
@@ -87,11 +94,13 @@ namespace ProyectoFinalEstructuraDeDatos
                 cmbGenero.Visibility = Visibility.Visible;
                 cmbGenero2.Visibility = Visibility.Visible;
 
-                btnNuevo.Visibility = Visibility.Hidden;
-                lbl_Pelicula.Visibility = Visibility.Hidden;
-                lbl_Serie.Visibility = Visibility.Hidden;
-                lbl_Tipo.Visibility = Visibility.Hidden;
-                Stackpanel.Visibility = Visibility.Hidden;
+                lblTitulo.Text = "";
+                lblAño.Text = "";
+                lblTitulo.Text = "";
+                lblRating.Text = "";
+                lblDescripcion.Text = "";
+                cmbGenero.SelectedIndex = -1;
+
                 btn_Cancelar.Visibility = Visibility.Visible;
                 btn_Guardar.Visibility = Visibility.Visible;
             }
@@ -100,7 +109,11 @@ namespace ProyectoFinalEstructuraDeDatos
         // Save
         private void btn_Guardar_Click(object sender, RoutedEventArgs e)
         {
-            if (rdSeries.IsChecked == true)
+            if(Int32.Parse(lblRating.Text) > 5 || Int32.Parse(txtRating.Text) > 5 || Int32.Parse(lblRating.Text) < 0 || Int32.Parse(txtRating.Text) < 0)
+            {
+                lblErrorRating.Visibility = Visibility.Visible;
+            }
+            else if (rdSeries.IsChecked == true)
             {
                 Series serie = new Series(
                         "Serie",
@@ -115,6 +128,14 @@ namespace ProyectoFinalEstructuraDeDatos
 
                 listaDatos.Add(serie);
                 lista.ItemsSource = listaDatos;
+                
+                hideFields();
+
+                btnNuevo.Visibility = Visibility.Visible;
+                lbl_Pelicula.Visibility = Visibility.Visible;
+                lbl_Serie.Visibility = Visibility.Visible;
+                lbl_Tipo.Visibility = Visibility.Visible;
+                Stackpanel.Visibility = Visibility.Visible;
             }
             else if (rdPeliculas.IsChecked == true)
             {
@@ -129,15 +150,15 @@ namespace ProyectoFinalEstructuraDeDatos
 
                 listaDatos.Add(pelicula);
                 lista.ItemsSource = listaDatos;
-            }
-            
-            hideFields();
 
-            btnNuevo.Visibility = Visibility.Visible;
-            lbl_Pelicula.Visibility = Visibility.Visible;
-            lbl_Serie.Visibility = Visibility.Visible;
-            lbl_Tipo.Visibility = Visibility.Visible;
-            Stackpanel.Visibility = Visibility.Visible;
+                hideFields();
+
+                btnNuevo.Visibility = Visibility.Visible;
+                lbl_Pelicula.Visibility = Visibility.Visible;
+                lbl_Serie.Visibility = Visibility.Visible;
+                lbl_Tipo.Visibility = Visibility.Visible;
+                Stackpanel.Visibility = Visibility.Visible;
+            }
         }
 
         // Cancel
@@ -187,6 +208,7 @@ namespace ProyectoFinalEstructuraDeDatos
             btn_Cancelar.Visibility = Visibility.Hidden;
             btn_Guardar.Visibility = Visibility.Hidden;
             btn_Editar.Visibility = Visibility.Hidden;
+            lblErrorRating.Visibility = Visibility.Hidden;
             grdCine.Children.Clear();
         }
 
@@ -224,8 +246,6 @@ namespace ProyectoFinalEstructuraDeDatos
         // Edit Movie/Series !!!
         private void btn_Editar_Click(object sender, RoutedEventArgs e)
         {
-            hideFields();
-
             if (listaDatos[lista.SelectedIndex].Formato == "Serie")
             {
                 listaDatos[lista.SelectedIndex].Titulo = ((VisualizacionSeries)(grdCine.Children[0])).txtTitle.Text;
@@ -247,6 +267,7 @@ namespace ProyectoFinalEstructuraDeDatos
                 listaDatos[lista.SelectedIndex].Genero = ((VisualizacionPeliculas)(grdCine.Children[0])).cmbGenre.SelectedIndex.ToString();
                 lista.Items.Refresh();
             }
+            hideFields();
         }
         
         /// Sorting Methods
