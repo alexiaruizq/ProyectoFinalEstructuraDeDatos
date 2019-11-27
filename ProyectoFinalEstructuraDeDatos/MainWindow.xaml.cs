@@ -227,7 +227,7 @@ namespace ProyectoFinalEstructuraDeDatos
                 ((VisualizacionPeliculas)(grdCine.Children[0])).txtYear.Text = listaDatos[lista.SelectedIndex].Año.ToString();
                 ((VisualizacionPeliculas)(grdCine.Children[0])).txtRating.Text = listaDatos[lista.SelectedIndex].Rating.ToString();
                 ((VisualizacionPeliculas)(grdCine.Children[0])).txtDescription.Text = listaDatos[lista.SelectedIndex].Descripcion;
-                ((VisualizacionPeliculas)(grdCine.Children[0])).cmbGenre.Text = listaDatos[lista.SelectedIndex].Genero;
+                ((VisualizacionPeliculas)(grdCine.Children[0])).cmbGenre.SelectedIndex = Int32.Parse(listaDatos[lista.SelectedIndex].Genero.ToString());
             }
             else if (listaDatos[lista.SelectedIndex].Formato == "Serie")
             {
@@ -237,7 +237,7 @@ namespace ProyectoFinalEstructuraDeDatos
                 ((VisualizacionSeries)(grdCine.Children[0])).txtYear.Text = listaDatos[lista.SelectedIndex].Año.ToString();
                 ((VisualizacionSeries)(grdCine.Children[0])).txtRating.Text = listaDatos[lista.SelectedIndex].Rating.ToString();
                 ((VisualizacionSeries)(grdCine.Children[0])).txtDescription.Text = listaDatos[lista.SelectedIndex].Descripcion;
-                ((VisualizacionSeries)(grdCine.Children[0])).cmbGenre.Text = listaDatos[lista.SelectedIndex].Genero;
+                ((VisualizacionSeries)(grdCine.Children[0])).cmbGenre.SelectedIndex = Int32.Parse(listaDatos[lista.SelectedIndex].Genero.ToString());
                 ((VisualizacionSeries)(grdCine.Children[0])).txtProductor.Text = listaDatos[lista.SelectedIndex].Productor;
                 ((VisualizacionSeries)(grdCine.Children[0])).txtSeasons.Text = listaDatos[lista.SelectedIndex].Temporadas.ToString();
             }

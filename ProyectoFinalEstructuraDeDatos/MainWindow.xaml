@@ -32,7 +32,7 @@
         <Button x:Name="btn_Guardar" Visibility="Hidden" Margin="386,347,0,0" Content="Guardar elemento nuevo" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="164" Click="btn_Guardar_Click"/>
         <Button x:Name="btn_Editar" Visibility="Hidden" Margin="386,347,0,0" Content="Editar Elemento" HorizontalAlignment="Left" Height="20" VerticalAlignment="Top" Width="164" Click="btn_Editar_Click"/>
         <Button x:Name="btn_Cancelar" Visibility="Hidden" Margin="577,347,129.6,46" Content="Cancelar" Click="btn_Cancelar_Click" />
-        <Label x:Name="lblErrorRating" Content="Rating debe ser un número del 0 al 5" Visibility="Hidden" Foreground="Red" HorizontalAlignment="Left" Margin="293,326,0,0" VerticalAlignment="Top" Width="213"/>
+        <Label x:Name="lblErrorRating" Content="Rating debe ser un número del 0 al 5" Visibility="Hidden" Foreground="Red" HorizontalAlignment="Left" Margin="292,313,0,0" VerticalAlignment="Top" Width="213"/>
         <Grid x:Name="grdCine" Margin="0,0,-0.4,0"/>
 
 
